@@ -48,7 +48,7 @@ jobs:
         id: vars2
         run: echo ::set-output name=current_tag::$(git describe --tags `git rev-list --tags --max-count=1`)
         shell: bash
-      - run: git checkout 656cf336fce6a53e192d6d4cc7a720b399ac23e5
+      - run: git checkout cc813cf1574837bb24d495b2cecdd40ffeb6d7b7
       - name: Generate Changelog
         run: npx conventional-changelog-cli -i CHANGELOG.md -s -p conventionalcommits
       - name: remove version number from body
@@ -60,7 +60,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          commitish: 656cf336fce6a53e192d6d4cc7a720b399ac23e5
+          commitish: cc813cf1574837bb24d495b2cecdd40ffeb6d7b7
           tag_name: ${{ fromJson(steps.manifest.outputs.manifest).version }}
           release_name: Release ${{ fromJson(steps.manifest.outputs.manifest).version }}
           draft: false
